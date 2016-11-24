@@ -13,3 +13,8 @@ gradle-app.setting
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
 .idea/workspace.xml
+.idea/libraries/Gradle__com_beust_jcommander_1_48.xml
+.idea/libraries/Gradle__org_apache_ant_ant_1_9_7.xml
+.idea/libraries/Gradle__org_beanshell_bsh_2_0b4.xml
+.idea/libraries/Gradle__org_testng_testng_6_9_13_6.xml
+.idea/libraries/Gradle__org_apache_ant_ant_launcher_1_9_7.xml
