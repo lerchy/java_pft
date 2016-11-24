@@ -1,4 +1,4 @@
-package ru.stqa.pft.homework.excercise2;
+package ru.stqa.pft.homework;
 
 /**
  * Created by vgagarin on 22.11.2016.
