@@ -19,12 +19,11 @@ public class GroupCreationTest {
     
     @BeforeMethod
     public void setUp() throws Exception {
+        // open browser
         wd = new FirefoxDriver();
         wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-    }
-    
-    @Test
-    public void  GroupCreationTest() {
+
+        //login
         wd.get("http://localhost/addressbook/index.php");
         wd.findElement(By.name("pass")).click();
         wd.findElement(By.name("pass")).clear();
@@ -33,6 +32,11 @@ public class GroupCreationTest {
         wd.findElement(By.name("user")).clear();
         wd.findElement(By.name("user")).sendKeys("admin");
         wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
+    }
+    
+    @Test
+    public void  testGroupCreation() {
+
         wd.findElement(By.linkText("groups")).click();
         wd.findElement(By.xpath("//div[@id='content']/form/input[4]")).click();
         wd.findElement(By.name("group_name")).click();
