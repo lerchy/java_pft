@@ -14,7 +14,6 @@ public class GroupCreationTest {
     
     @BeforeMethod
     public void setUp() throws Exception {
-        // open browser
         wd = new FirefoxDriver();
         wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         wd.get("http://localhost/addressbook/index.php");
