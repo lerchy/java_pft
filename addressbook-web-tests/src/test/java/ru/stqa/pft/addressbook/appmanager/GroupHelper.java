@@ -13,10 +13,8 @@ public class GroupHelper extends HelperBase{
         super(wd);
     }
 
-
-
-    public void submitGroupForm() {
-        click(By.name("submit"));
+    public void initGroupCreation() {
+        click(By.xpath("//div[@id='content']/form/input[4]"));
     }
 
     public void fillGroupForm(GroupData groupData) {
@@ -28,8 +26,8 @@ public class GroupHelper extends HelperBase{
         type(By.name("group_footer"), groupData.getGroupfooter());
     }
 
-    public void initGroupCreation() {
-        click(By.xpath("//div[@id='content']/form/input[4]"));
+    public void submitGroupForm() {
+        click(By.name("submit"));
     }
 
     public void returnToGroupPage() {
