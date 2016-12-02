@@ -7,9 +7,9 @@ import ru.stqa.pft.addressbook.model.UserData;
 /**
  * Created by valeriyagagarina on 12/1/16.
  */
-public class ContactHelher extends HelperBase{
+public class ContactHelper extends HelperBase{
 
-    public ContactHelher(FirefoxDriver wd) {
+    public ContactHelper(FirefoxDriver wd) {
         super(wd);
     }
 
@@ -17,7 +17,7 @@ public class ContactHelher extends HelperBase{
         click(By.linkText("add new"));
     }
 
-    public void fillUserCreationForm(UserData userData) {
+    public void fillUserForm(UserData userData) {
         type(By.name("firstname"),userData.getFirstname());
         type(By.name("middlename"), userData.getMiddlename());
         type(By.name("lastname"), userData.getLastname());
@@ -32,4 +32,13 @@ public class ContactHelher extends HelperBase{
     public void submitUserCreation() {
         click(By.name("submit"));
     }
+    
+    public void selectUser() { click(By.name("selected[]"));}
+
+    public void deleteUser() { click(By.xpath("//div[@id='content']/form[2]/div[2]/input")); }
+
+
+    public void initEditUser() { click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img")); }
+
+    public void submitUserModification() { click(By.name("update")); }
 }

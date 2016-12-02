@@ -9,10 +9,11 @@ public class UserCreationTest extends TestBase{
     @Test
     public void testUserCreation() {
 
-        app.getContactHelher().initUserCreation();
-        app.getContactHelher().fillUserCreationForm(new UserData("Thomas", "A.", "Anderson",
+        app.getContactHelper().initUserCreation();
+        app.getContactHelper().fillUserForm(new UserData("Thomas", "A.", "Anderson",
                                           "Neo", "Software Engineer", "Matrix",
                                           "222-333-22", "333-222-33", "Lowertown, USA"));
-        app.getContactHelher().submitUserCreation();
+        app.getContactHelper().submitUserCreation();
+        app.getNavigationHelper().goToHomePage();
     }
 }
