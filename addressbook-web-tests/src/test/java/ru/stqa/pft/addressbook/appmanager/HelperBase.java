@@ -11,18 +11,23 @@ import org.openqa.selenium.WebElement;
 public class HelperBase {
     private WebDriver wd;
 
-    public HelperBase(WebDriver wd) {
+    HelperBase(WebDriver wd) {
         this.wd = wd;
     }
 
-    protected void click(By locator) {
+    void click(By locator) {
         wd.findElement(locator).click();
     }
 
-    protected void type(By locator, String text) {
+    void type(By locator, String text) {
         WebElement element = findElement(locator);
-        element.clear();
-        element.sendKeys(text);
+        if (text != null) {
+            String existingText = element.getAttribute("value");
+            if(!text.equals(existingText)) {
+                element.clear();
+                element.sendKeys(text);
+            }
+        }
     }
 
     private WebElement findElement(By locator) {
