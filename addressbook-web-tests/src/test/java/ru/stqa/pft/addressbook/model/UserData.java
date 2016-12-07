@@ -4,12 +4,12 @@ public class UserData {
     private final String firstname;
     private final String middlename;
     private final String lastname;
-    private final String nickname;
-    private final String title;
-    private final String company;
-    private final String homephone;
-    private final String mobilephone;
-    private final String address;
+    private String nickname;
+    private String title;
+    private String company;
+    private String homephone;
+    private String mobilephone;
+    private String address;
     private String group;
 
     public UserData(String firstname, String middlename,
@@ -28,6 +28,14 @@ public class UserData {
         this.address = address;
         this.group = group;
     }
+
+    public UserData(String firstname, String middlename, String lastname, String group) {
+        this.firstname = firstname;
+        this.middlename = middlename;
+        this.lastname = lastname;
+        this.group = group;
+    }
+
 
     public String getFirstname() {
         return firstname;

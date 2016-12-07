@@ -51,4 +51,14 @@ public class ContactHelper extends HelperBase{
     public void initEditUser() { click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img")); }
 
     public void submitUserModification() { click(By.name("update")); }
+
+    public void createContact(UserData user) {
+        initUserCreation();
+        fillUserForm(user, true);
+        submitUserCreation();
+    }
+
+    public boolean isThereContact() {
+        return isElementPresent(By.name("selected"));
+    }
 }

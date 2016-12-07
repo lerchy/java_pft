@@ -10,6 +10,12 @@ public class UserModificationTest extends TestBase{
     @Test
     public void testUserModification(){
         app.getNavigationHelper().goToHomePage();
+        // if there is no users in the table, create one and return to the home page
+        if(!app.getContactHelper().isThereContact()){
+            app.getContactHelper().createContact(new UserData("test1", null, null, "newTest1"));
+        }
+        app.getNavigationHelper().goToHomePage();
+
         app.getContactHelper().selectUser();
         app.getContactHelper().initEditUser();
         app.getContactHelper().fillUserForm(new UserData("XXX", "XXX", "XXX",
