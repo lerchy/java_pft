@@ -12,7 +12,8 @@ public class UserCreationTest extends TestBase{
         app.getContactHelper().initUserCreation();
         app.getContactHelper().fillUserForm(new UserData("Thomas", "A.", "Anderson",
                                           "Neo", "Software Engineer", "Matrix",
-                                          "222-333-22", "333-222-33", "Lowertown, USA"));
+                                          "222-333-22", "333-222-33", "Lowertown, USA",
+                                          "test1"), true);
         app.getContactHelper().submitUserCreation();
         app.getNavigationHelper().goToHomePage();
     }

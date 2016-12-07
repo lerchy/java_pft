@@ -1,15 +1,18 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+
+import java.util.NoSuchElementException;
 
 /**
  * Created by valeriyagagarina on 12/1/16.
  */
 public class HelperBase {
-    private WebDriver wd;
+    WebDriver wd;
 
     HelperBase(WebDriver wd) {
         this.wd = wd;
@@ -44,4 +47,13 @@ public class HelperBase {
     }
 
     public void closeAlert(){ wd.switchTo().alert().accept(); }
+
+    boolean isElementPresent(By locator) {
+        try {
+            findElement(locator);
+            return true;
+        } catch (Exception ex){
+            return false;
+        }
+    }
 }
