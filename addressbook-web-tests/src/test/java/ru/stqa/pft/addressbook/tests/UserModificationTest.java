@@ -20,7 +20,7 @@ public class UserModificationTest extends TestBase{
         app.getContactHelper().initEditUser();
         app.getContactHelper().fillUserForm(new UserData("XXX", "XXX", "XXX",
                 "XXX", "XXX", "XXX","XXX-XX-XX", "XX-XXX-XX",
-                "XXX, XXX", null), false);
+                "XXX, XXX", null, 0), false);
         app.getContactHelper().submitUserModification();
         app.getNavigationHelper().goToHomePage();
 
