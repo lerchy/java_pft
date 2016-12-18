@@ -12,13 +12,12 @@ public class UserData {
     private String mobilephone;
     private String address;
     private String group;
-    private int id;
 
     public UserData(String firstname, String middlename,
                     String lastname, String nickname,
                     String title, String company,
                     String homephone, String mobilephone,
-                    String address, String group, int id) {
+                    String address, String group) {
         this.firstname = firstname;
         this.middlename = middlename;
         this.lastname = lastname;
@@ -29,7 +28,6 @@ public class UserData {
         this.mobilephone = mobilephone;
         this.address = address;
         this.group = group;
-        this.id = id;
     }
 
     public UserData(String firstname, String middlename, String lastname, String group) {
@@ -37,7 +35,6 @@ public class UserData {
         this.middlename = middlename;
         this.lastname = lastname;
         this.group = group;
-        this.id = Integer.MAX_VALUE;
     }
 
 
@@ -97,8 +94,8 @@ public class UserData {
         return result;
     }
 
-    public int getId() {
-        return id;
+    public String getFullName() {
+        return lastname + " " + firstname;
     }
 
     @Override
@@ -107,9 +104,5 @@ public class UserData {
                 "firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
                 '}';
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 }

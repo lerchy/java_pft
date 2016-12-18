@@ -32,6 +32,12 @@ public class GroupModificationTest extends TestBase {
         Comparator<? super GroupData> byID = (g1, g2) -> Integer.compare(g1.getId(), g2.getId());
         before.sort(byID);
         after.sort(byID);
+
+        for(int i = 0; i < after.size(); i++){
+            System.out.print("before " + i + ":" + before.get(i) + ", ");
+            System.out.print("after " + i + ":" + after.get(i));
+            System.out.println("");
+        }
         Assert.assertEquals(before, after);
     }
 }

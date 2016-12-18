@@ -22,9 +22,11 @@ public class UserCreationTest extends TestBase{
         Assert.assertEquals(after.size(), before.size() + 1);
 
         before.add(contact);
-        Comparator<? super UserData> byID = (g1, g2) -> Integer.compare(g1.getId(), g2.getId());
-        before.sort(byID);
-        after.sort(byID);
+        Comparator<? super UserData> byFullName = (u1, u2) -> u1.getFullName().compareToIgnoreCase(u2.getFullName());
+        before.sort(byFullName);
+        System.out.println(before.get(before.size()-1));
+        after.sort(byFullName);
+        System.out.println(after.get(before.size()-1));
         Assert.assertEquals(before, after);
     }
 }

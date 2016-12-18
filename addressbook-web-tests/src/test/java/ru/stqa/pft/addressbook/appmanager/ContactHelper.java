@@ -47,7 +47,7 @@ public class ContactHelper extends HelperBase{
         click(By.name("submit"));
     }
     
-    public void selectUser() { click(By.name("selected[]"));}
+    public void selectUser(int index) { wd.findElements(By.name("selected[]")).get(index).click();}
 
     public void deleteUser() { click(By.xpath("//div[@id='content']/form[2]/div[2]/input")); }
 
@@ -80,4 +80,5 @@ public class ContactHelper extends HelperBase{
         }
         return contacts;
     }
+
 }

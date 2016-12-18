@@ -20,7 +20,7 @@ public class UserDelitionTest extends TestBase{
             app.getNavigationHelper().goToHomePage();
         }
         List<UserData> before =  app.getContactHelper().getContactList();
-        app.getContactHelper().selectUser();
+        app.getContactHelper().selectUser(before.size() - 1);
         app.getContactHelper().deleteUser();
         app.getSessionHelper().closeAlert();
         app.getNavigationHelper().goToHomePage();
