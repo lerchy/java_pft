@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class UserDelitionTest extends TestBase{
 
-    @Test
+    @Test(enabled = false)
     public void testUserCreation(){
         app.getNavigationHelper().goToHomePage();
         if(!app.getContactHelper().isThereContact()){

@@ -33,11 +33,6 @@ public class GroupModificationTest extends TestBase {
         before.sort(byID);
         after.sort(byID);
 
-        for(int i = 0; i < after.size(); i++){
-            System.out.print("before " + i + ":" + before.get(i) + ", ");
-            System.out.print("after " + i + ":" + after.get(i));
-            System.out.println("");
-        }
         Assert.assertEquals(before, after);
     }
 }

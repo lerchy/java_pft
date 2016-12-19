@@ -12,7 +12,7 @@ import java.util.List;
  * Created by valeriyagagarina on 12/2/16.
  */
 public class UserModificationTest extends TestBase{
-    @Test
+    @Test(enabled = false)
     public void testUserModification(){
         app.getNavigationHelper().goToHomePage();
 
