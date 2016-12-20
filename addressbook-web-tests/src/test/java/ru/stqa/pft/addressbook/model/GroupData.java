@@ -1,26 +1,10 @@
 package ru.stqa.pft.addressbook.model;
 
 public class GroupData {
-    private final String groupname;
-    private int id;
-    private final String groupheader;
-    private final String groupfooter;
-
-    public GroupData(int groupId, String groupname, String groupheader, String groupfooter) {
-        this.id = groupId;
-        this.groupname = groupname;
-        this.groupheader = groupheader;
-        this.groupfooter = groupfooter;
-    }
-
-
-
-    public GroupData(String groupname, String groupheader, String groupfooter) {
-        this.id = Integer.MAX_VALUE;
-        this.groupname = groupname;
-        this.groupheader = groupheader;
-        this.groupfooter = groupfooter;
-    }
+    private String name;
+    private int id = Integer.MAX_VALUE;;
+    private String header;
+    private String footer;
 
     public int getId() {
         return id;
@@ -29,25 +13,42 @@ public class GroupData {
     @Override
     public String toString() {
         return "GroupData{" +
-                "groupname='" + groupname + '\'' +
+                "groupname='" + name + '\'' +
                 ", id='" + id + '\'' +
                 '}';
     }
 
-    public String getGroupname() {
-        return groupname;
+    public String getName() {
+        return name;
     }
 
-    public String getGroupheader() {
-        return groupheader;
+    public String getHeader() {
+        return header;
     }
 
-    public String getGroupfooter() {
-        return groupfooter;
+    public String getFooter() {
+        return footer;
     }
 
-    public void setId(int id) {
+    public GroupData withId(int id) {
+
         this.id = id;
+        return this;
+    }
+
+    public GroupData withName(String groupname) {
+        this.name = groupname;
+        return this;
+    }
+
+    public GroupData withHeader(String header) {
+        this.header = header;
+        return this;
+    }
+
+    public GroupData withFooter(String footer) {
+        this.footer = footer;
+        return this;
     }
 
     @Override
@@ -57,11 +58,11 @@ public class GroupData {
 
         GroupData groupData = (GroupData) o;
 
-        return groupname != null ? groupname.equals(groupData.groupname) : groupData.groupname == null;
+        return name != null ? name.equals(groupData.name) : groupData.name == null;
     }
 
     @Override
     public int hashCode() {
-        return groupname != null ? groupname.hashCode() : 0;
+        return name != null ? name.hashCode() : 0;
     }
 }
