@@ -2,7 +2,7 @@ package ru.stqa.pft.addressbook.model;
 
 public class GroupData {
     private String name;
-    private int id = Integer.MAX_VALUE;;
+    private int id;
     private String header;
     private String footer;
 
