@@ -4,7 +4,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 
-import java.util.Arrays;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -14,7 +13,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 /**
  * Created by valeriyagagarina on 12/27/16.
  */
-public class ContactPhoneTests extends TestBase{
+public class ContactPhoneTest extends TestBase{
 
     @BeforeMethod
     public void ensurePreconditions(){
@@ -37,7 +36,7 @@ public class ContactPhoneTests extends TestBase{
     private String mergePhones(ContactData contact) {
         return Stream.of(contact.getHomephone(), contact.getMobilephone(), contact.getWorkphone())
                 .filter(s -> !s.equals(""))
-                .map(ContactPhoneTests::cleaned)
+                .map(ContactPhoneTest::cleaned)
                 .collect(Collectors.joining("\n"));
     }
 

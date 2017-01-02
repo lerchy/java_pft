@@ -8,7 +8,10 @@ public class ContactData {
     private String workphone;
     private String allPhones;
     private String address;
-    private String email;
+    private String email1;
+    private String email2;
+    private String email3;
+    private String allEmails;
     private String group;
     private int id;
 
@@ -27,6 +30,12 @@ public class ContactData {
     public String getHomephone() { return homephone; }
     public String getWorkphone() { return workphone; }
     public String getAllPhones() { return allPhones; }
+    public String getEmail1() { return email1; }
+    public String getEmail2() { return email2; }
+    public String getEmail3() { return email3; }
+    public String getAllEmails() {
+        return allEmails;
+    }
     public String getAddress() {
         return address;
     }
@@ -63,8 +72,23 @@ public class ContactData {
         return this;
     }
 
-    public ContactData withEmail(String email) {
-        this.email = email;
+    public ContactData withEmail1(String email) {
+        this.email1 = email;
+        return this;
+    }
+
+    public ContactData withEmail2(String email) {
+        this.email2 = email;
+        return this;
+    }
+
+    public ContactData withEmail3(String email) {
+        this.email3 = email;
+        return this;
+    }
+
+    public ContactData withAllEmails(String emails) {
+        this.allEmails = emails;
         return this;
     }
 
@@ -77,6 +101,12 @@ public class ContactData {
         this.id = id;
         return this;
     }
+
+    public ContactData withAddress(String address) {
+        this.address = address;
+        return this;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -106,17 +136,5 @@ public class ContactData {
                 "firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
                 '}';
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 }
