@@ -1,5 +1,7 @@
 package ru.stqa.pft.addressbook.model;
 
+import java.io.File;
+
 public class ContactData {
     private String firstname;
     private String lastname;
@@ -14,10 +16,9 @@ public class ContactData {
     private String allEmails;
     private String group;
     private int id;
+    private File photo;
 
-
-
-
+    // getters
     public String getFirstname() {
         return firstname;
     }
@@ -33,15 +34,15 @@ public class ContactData {
     public String getEmail1() { return email1; }
     public String getEmail2() { return email2; }
     public String getEmail3() { return email3; }
-    public String getAllEmails() {
-        return allEmails;
-    }
+    public String getAllEmails() { return allEmails;}
     public String getAddress() {
         return address;
     }
     public String getGroup() { return group; }
     public int getId(){ return id;}
+    public File getPhoto() { return photo; }
 
+    // setters
     public ContactData withFirstname(String firstname) {
         this.firstname = firstname;
         return this;
@@ -107,6 +108,11 @@ public class ContactData {
         return this;
     }
 
+    public ContactData withPhoto(File photo) {
+        this.photo = photo;
+        return this;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -115,15 +121,12 @@ public class ContactData {
 
         ContactData that = (ContactData) o;
 
-        if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
-        return lastname != null ? lastname.equals(that.lastname) : that.lastname == null;
+        return id == that.id;
     }
 
     @Override
     public int hashCode() {
-        int result = firstname != null ? firstname.hashCode() : 0;
-        result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
-        return result;
+        return id;
     }
 
     public String getFullName() {
@@ -133,6 +136,7 @@ public class ContactData {
     @Override
     public String toString() {
         return "ContactData{" +
+                "id='" +id + '\''+
                 "firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
                 '}';

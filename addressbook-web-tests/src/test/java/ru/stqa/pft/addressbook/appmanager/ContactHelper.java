@@ -23,16 +23,17 @@ public class ContactHelper extends HelperBase{
         click(By.linkText("add new"));
     }
 
-    private void fillUserForm(ContactData userData, boolean creation) {
-        type(By.name("firstname"),userData.getFirstname());
-        type(By.name("lastname"), userData.getLastname());
-        type(By.name("mobile"), userData.getMobilephone());
-        type(By.name("home"), userData.getHomephone());
-        type(By.name("work"), userData.getWorkphone());
-        type(By.name("address"), userData.getAddress());
+    private void fillContactForm(ContactData contactData, boolean creation) {
+        type(By.name("firstname"),contactData.getFirstname());
+        type(By.name("lastname"), contactData.getLastname());
+        type(By.name("mobile"), contactData.getMobilephone());
+        type(By.name("home"), contactData.getHomephone());
+        type(By.name("work"), contactData.getWorkphone());
+        type(By.name("address"), contactData.getAddress());
+        type(By.name("photo"), contactData.getPhoto().getAbsolutePath());
 
         if (creation){
-            new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(userData.getGroup());
+            new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
         } else{
             Assert.assertFalse(isElementPresent(By.name("new_group")));
         }
@@ -58,14 +59,14 @@ public class ContactHelper extends HelperBase{
 
     public void createContact(ContactData user) {
         initUserCreation();
-        fillUserForm(user, true);
+        fillContactForm(user, true);
         submitUserCreation();
         returnToHomePage();
     }
 
     public void modify(ContactData contact) {
         initContactModification(contact);
-        fillUserForm(contact, false);
+        fillContactForm(contact, false);
         confirmUpdate();
         returnToHomePage();
     }
