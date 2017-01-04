@@ -23,10 +23,13 @@ public class ContactAddressTests extends TestBase{
 
     @Test
     public void testAddress(){
-        app.goTo().homePage();
         ContactData contact = app.contact().all().iterator().next();
         ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
 
-        assertThat(contact.getAddress(), equalTo(contactInfoFromEditForm.getAddress()));
+        assertThat(cleaned(contact.getAddress()), equalTo(cleaned(contactInfoFromEditForm.getAddress())));
+    }
+
+    private static String cleaned(String address){
+        return address.replaceAll("\\n", "").replaceAll("\\s", "");
     }
 }

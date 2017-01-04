@@ -127,7 +127,7 @@ public class ContactData {
     }
 
     public String getFullName() {
-        return lastname + " " + firstname;
+        return firstname + " " + lastname;
     }
 
     @Override

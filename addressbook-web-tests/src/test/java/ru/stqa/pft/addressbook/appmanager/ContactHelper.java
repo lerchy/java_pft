@@ -50,8 +50,9 @@ public class ContactHelper extends HelperBase{
         click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
     }
 
-
-    private void initEditUser() { click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img")); }
+    public void showFullInfo(ContactData contact){
+        wd.findElement(By.cssSelector(String.format("a[href='view.php?id=%s'", contact.getId()))).click();
+    }
 
     private void confirmUpdate() { click(By.name("update")); }
 
@@ -63,8 +64,7 @@ public class ContactHelper extends HelperBase{
     }
 
     public void modify(ContactData contact) {
-        selectUser(contact.getId());
-        initEditUser();
+        initContactModification(contact);
         fillUserForm(contact, false);
         confirmUpdate();
         returnToHomePage();
@@ -105,7 +105,7 @@ public class ContactHelper extends HelperBase{
     }
 
     public ContactData infoFromEditForm(ContactData contact) {
-        initContactModificationByID(contact.getId());
+        initContactModification(contact);
         String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
         String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
         String home = wd.findElement(By.name("home")).getAttribute("value");
@@ -121,7 +121,11 @@ public class ContactHelper extends HelperBase{
                 .withEmail1(email1).withEmail2(email2).withEmail3(email3);
     }
 
-    private void initContactModificationByID(int id) {
-        wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s'", id))).click();
+    private void initContactModification(ContactData contact) {
+        wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s'", contact.getId()))).click();
+    }
+
+    public String fullContactInfo(){
+        return wd.findElement(By.id("content")).getText();
     }
 }
