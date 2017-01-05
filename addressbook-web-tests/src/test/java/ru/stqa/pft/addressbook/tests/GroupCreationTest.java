@@ -21,17 +21,16 @@ public class GroupCreationTest extends TestBase {
 
     @DataProvider
     public Iterator<Object[]> validGroupsFromJson() throws IOException {
-        try(BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/groups.json")))){
-            String json = "";
-            String line = reader.readLine();
-            while(line != null){
-                json += line;
-                line = reader.readLine();
-            }
-            Gson gson = new Gson();
-            List<GroupData> groups = gson.fromJson(json, new TypeToken<List<GroupData>>(){}.getType());
-            return groups.stream().map(g -> new Object[] {g}).collect(Collectors.toList()).iterator();
+        BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/groups.json")));
+        String json = "";
+        String line = reader.readLine();
+        while(line != null){
+            json += line;
+            line = reader.readLine();
         }
+        Gson gson = new Gson();
+        List<GroupData> groups = gson.fromJson(json, new TypeToken<List<GroupData>>(){}.getType());
+        return groups.stream().map(g -> new Object[] {g}).collect(Collectors.toList()).iterator();
     }
 
     @DataProvider
@@ -50,8 +49,8 @@ public class GroupCreationTest extends TestBase {
         }
     }
 
-    @Test(enabled = false, dataProvider = "validGroupsFromJson")
-    public void  testGroupCreation(GroupData group) throws IOException{
+    @Test(dataProvider = "validGroupsFromJson")
+    public void  testGroupCreation(GroupData group) {
         app.goTo().groupPage();
         Groups before =  app.group().all();
         app.group().create(group);
@@ -61,7 +60,7 @@ public class GroupCreationTest extends TestBase {
     }
 
     @Test
-    public void  testBadGroupCreation() throws  IOException{
+    public void  testBadGroupCreation() {
         app.goTo().groupPage();
         Groups before =  app.group().all();
         GroupData group = new GroupData().withName("test2'");

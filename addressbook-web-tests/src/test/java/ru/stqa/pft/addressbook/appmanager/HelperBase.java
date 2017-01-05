@@ -1,13 +1,11 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.*;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-
 import java.io.File;
-import java.util.NoSuchElementException;
 
 /**
  * Created by valeriyagagarina on 12/1/16.

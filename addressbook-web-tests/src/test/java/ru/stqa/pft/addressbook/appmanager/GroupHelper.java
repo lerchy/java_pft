@@ -6,9 +6,7 @@ import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by valeriyagagarina on 12/1/16.
@@ -35,23 +33,18 @@ public class GroupHelper extends HelperBase{
     private void submitGroupForm() {
         click(By.name("submit"));
     }
-
     private void returnToGroupPage() {
         click(By.linkText("group page"));
     }
-
     private void deleteSelectedGroups() {
         click(By.name("delete"));
     }
-
     private void selectGroupById(int id) {
         wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
     }
-
     private void initGroupModification() {
         click(By.name("edit"));
     }
-
     private void submitGroupModification() {
         click(By.name("update"));
     }
@@ -72,7 +65,6 @@ public class GroupHelper extends HelperBase{
         groupCache = null;
         returnToGroupPage();
     }
-
 
     public boolean isThereGroup() {
         return isElementPresent(By.name("selected[]"));
@@ -104,6 +96,4 @@ public class GroupHelper extends HelperBase{
         groupCache = null;
         returnToGroupPage();
     }
-
-
 }

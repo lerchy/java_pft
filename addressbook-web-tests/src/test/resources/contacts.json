@@ -4,34 +4,7 @@
     "lastname": "lastname0",
     "mobilephone": "000",
     "address": "Contry, Street, 00000",
-    "email1": "test0@email.com"
-  },
-  {
-    "firstname": "firstname1",
-    "lastname": "lastname1",
-    "mobilephone": "111",
-    "address": "Contry, Street, 00001",
-    "email1": "test1@email.com"
-  },
-  {
-    "firstname": "firstname2",
-    "lastname": "lastname2",
-    "mobilephone": "222",
-    "address": "Contry, Street, 00002",
-    "email1": "test2@email.com"
-  },
-  {
-    "firstname": "firstname3",
-    "lastname": "lastname3",
-    "mobilephone": "333",
-    "address": "Contry, Street, 00003",
-    "email1": "test3@email.com"
-  },
-  {
-    "firstname": "firstname4",
-    "lastname": "lastname4",
-    "mobilephone": "444",
-    "address": "Contry, Street, 00004",
-    "email1": "test4@email.com"
+    "email1": "test0@email.com",
+    "group": "test0"
   }
 ]

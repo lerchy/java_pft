@@ -55,9 +55,9 @@ public class ContactDataGenerator {
     private void saveAsJson(List<ContactData> contacts, File file) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
         String json = gson.toJson(contacts);
-        try(Writer writer = new FileWriter(file)){
-            writer.write(json);
-        }
+        Writer writer = new FileWriter(file);
+        writer.write(json);
+        writer.close();
     }
 
     private List<ContactData> generateContacts(int count) {
@@ -67,7 +67,9 @@ public class ContactDataGenerator {
                     .withLastname(String.format("lastname%s", i))
                     .withAddress(String.format("Contry, Street, 0000%s", i))
                     .withEmail1(String.format("test%s@email.com", i))
-                    .withMobilePhone(String.format("%s%s%s", i, i, i)));
+                    .withMobilePhone(String.format("%s%s%s", i, i, i))
+                    .inGroup("test0"));
+
         }
         return contacts;
     }
