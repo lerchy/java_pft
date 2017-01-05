@@ -13,8 +13,8 @@ import static org.openqa.selenium.remote.BrowserType.FIREFOX;
  * Created by valeriyagagarina on 12/1/16.
  */
 public class TestBase {
-    
-    protected static ApplicationManager app = new ApplicationManager(getProperty("browser", FIREFOX));
+
+    protected static ApplicationManager app = new ApplicationManager(getProperty("browser"));
 
     @BeforeSuite
     public void setUp() throws Exception {
