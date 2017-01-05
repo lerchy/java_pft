@@ -11,7 +11,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ContactCreationTest extends TestBase{
 
-<<<<<<< HEAD
     @DataProvider
     public Iterator<Object[]> validContactsFromJson() throws IOException {
         try(BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.json")))){
@@ -29,10 +28,9 @@ public class ContactCreationTest extends TestBase{
 
     @Test(enabled = true, dataProvider = "validContactsFromJson")
     public void testUserCreation(ContactData contact) {
-=======
+    }
     @Test(enabled = true)
     public void testUserCreation() {
->>>>>>> parent of 9c371dd... Задание №15: Параметризовать тесты для создания групп и контактов
         app.goTo().homePage();
         Contacts before =  app.contact().all();
         System.out.println(before);
