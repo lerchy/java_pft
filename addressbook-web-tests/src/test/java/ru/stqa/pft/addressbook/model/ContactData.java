@@ -18,6 +18,7 @@ public class ContactData {
     @Expose
     @Column(name = "lastname")
     private String lastname;
+    @Expose
     @Column(name = "home")
     @Type(type = "text")
     private String homephone;
@@ -25,6 +26,7 @@ public class ContactData {
     @Column(name = "mobile")
     @Type(type = "text")
     private String mobilephone;
+    @Expose
     @Column(name = "work")
     @Type(type = "text")
     private String workphone;
@@ -38,9 +40,11 @@ public class ContactData {
     @Column(name = "email")
     @Type(type = "text")
     private String email1;
+    @Expose
     @Column(name = "email2")
     @Type(type = "text")
     private String email2;
+    @Expose
     @Column(name = "email3")
     @Type(type = "text")
     private String email3;
@@ -76,7 +80,7 @@ public class ContactData {
     }
     public String getGroup() { return group; }
     public int getId(){ return id;}
-    public File getPhoto() { return new File(photo); }
+//    public File getPhoto() { return new File(photo); }
 
     // setters
     public ContactData withFirstname(String firstname) {
@@ -157,12 +161,31 @@ public class ContactData {
 
         ContactData that = (ContactData) o;
 
-        return id == that.id;
+        if (id != that.id) return false;
+        if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
+        if (lastname != null ? !lastname.equals(that.lastname) : that.lastname != null) return false;
+        if (homephone != null ? !homephone.equals(that.homephone) : that.homephone != null) return false;
+        if (mobilephone != null ? !mobilephone.equals(that.mobilephone) : that.mobilephone != null) return false;
+        if (workphone != null ? !workphone.equals(that.workphone) : that.workphone != null) return false;
+        if (address != null ? !address.equals(that.address) : that.address != null) return false;
+        if (email1 != null ? !email1.equals(that.email1) : that.email1 != null) return false;
+        if (email2 != null ? !email2.equals(that.email2) : that.email2 != null) return false;
+        return email3 != null ? email3.equals(that.email3) : that.email3 == null;
     }
 
     @Override
     public int hashCode() {
-        return id;
+        int result = id;
+        result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
+        result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
+        result = 31 * result + (homephone != null ? homephone.hashCode() : 0);
+        result = 31 * result + (mobilephone != null ? mobilephone.hashCode() : 0);
+        result = 31 * result + (workphone != null ? workphone.hashCode() : 0);
+        result = 31 * result + (address != null ? address.hashCode() : 0);
+        result = 31 * result + (email1 != null ? email1.hashCode() : 0);
+        result = 31 * result + (email2 != null ? email2.hashCode() : 0);
+        result = 31 * result + (email3 != null ? email3.hashCode() : 0);
+        return result;
     }
 
     public String getFullName() {
@@ -172,9 +195,16 @@ public class ContactData {
     @Override
     public String toString() {
         return "ContactData{" +
-                "id='" +id + '\''+
-                "firstname='" + firstname + '\'' +
+                "id=" + id +
+                ", firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
+                ", homephone='" + homephone + '\'' +
+                ", mobilephone='" + mobilephone + '\'' +
+                ", workphone='" + workphone + '\'' +
+                ", address='" + address + '\'' +
+                ", email1='" + email1 + '\'' +
+                ", email2='" + email2 + '\'' +
+                ", email3='" + email3 + '\'' +
                 '}';
     }
 }

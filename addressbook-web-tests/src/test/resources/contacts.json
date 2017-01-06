@@ -2,9 +2,13 @@
   {
     "firstname": "firstname0",
     "lastname": "lastname0",
-    "mobilephone": "000",
+    "homephone": "111",
+    "mobilephone": "222",
+    "workphone": "333",
     "address": "Contry, Street, 00000",
     "email1": "test0@email.com",
+    "email2": "test0@email2.com",
+    "email3": "test0@email3.com",
     "group": "test0"
   }
 ]

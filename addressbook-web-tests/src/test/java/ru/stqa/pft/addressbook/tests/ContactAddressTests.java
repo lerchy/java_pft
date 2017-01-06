@@ -14,16 +14,18 @@ public class ContactAddressTests extends TestBase{
 
     @BeforeMethod
     public void ensurePreconditions(){
-        app.goTo().homePage();
-        if(app.contact().all().size() == 0){
-            app.contact().createContact(new ContactData().withLastname("Smith").withFirstname("John"));
-            app.goTo().homePage();
+        if(app.db().contacts().size() == 0){
+            app.contact().createContact(new ContactData()
+                    .withFirstname("firstname").withLastname("lastname")
+                    .withAddress("address").withHomePhone("333").withMobilePhone("333").withWorkPhone("3333")
+                    .withEmail1("test@email.com").withEmail2("test@email.com").withEmail3("test@email.com")
+                    .inGroup("test1"));
         }
     }
 
     @Test
     public void testAddress(){
-        ContactData contact = app.contact().all().iterator().next();
+        ContactData contact = app.db().contacts().iterator().next();
         ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
 
         assertThat(cleaned(contact.getAddress()), equalTo(cleaned(contactInfoFromEditForm.getAddress())));

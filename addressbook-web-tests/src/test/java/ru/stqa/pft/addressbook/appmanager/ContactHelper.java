@@ -29,8 +29,11 @@ public class ContactHelper extends HelperBase{
         type(By.name("mobile"), contactData.getMobilephone());
         type(By.name("home"), contactData.getHomephone());
         type(By.name("work"), contactData.getWorkphone());
+        type(By.name("email"), contactData.getEmail1());
+        type(By.name("email2"), contactData.getEmail2());
+        type(By.name("email3"), contactData.getEmail3());
         type(By.name("address"), contactData.getAddress());
-        attach(By.name("photo"), contactData.getPhoto());
+//        attach(By.name("photo"), contactData.getPhoto());
 
         if (creation){
             new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
@@ -128,5 +131,9 @@ public class ContactHelper extends HelperBase{
 
     public String fullContactInfo(){
         return wd.findElement(By.id("content")).getText();
+    }
+
+    public int count() {
+        return wd.findElements(By.name("selected[]")).size();
     }
 }
