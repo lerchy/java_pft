@@ -149,6 +149,20 @@ public class ContactHelper extends HelperBase{
         addToGroup();
     }
 
+    public void removeContactFromGroup(ContactData contact, GroupData group) {
+        filterByGroupId(group);
+        selectUser(contact.getId());
+        removeFromGroup();
+    }
+
+    private void removeFromGroup() {
+        click(By.name("remove"));
+    }
+
+    private void filterByGroupId(GroupData group) {
+        new Select(wd.findElement(By.name("group"))).selectByValue(Integer.toString(group.getId()));
+    }
+
     private void addToGroup() {
         click(By.name("add"));
     }
@@ -156,4 +170,6 @@ public class ContactHelper extends HelperBase{
     private void chooseGroup(GroupData group) {
         new Select(wd.findElement(By.name("to_group"))).selectByValue(Integer.toString(group.getId()));
     }
+
+
 }
