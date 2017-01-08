@@ -1,10 +1,15 @@
 package ru.stqa.pft.addressbook.model;
 
 import com.google.gson.annotations.Expose;
+import org.hibernate.Session;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.File;
+import java.security.acl.Group;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "addressbook")
@@ -50,9 +55,11 @@ public class ContactData {
     private String email3;
     @Transient
     private String allEmails;
-    @Expose
-    @Transient
-    private String group;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "address_in_groups",
+                joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "group_id"))
+    private Set<GroupData> groups = new HashSet<>();
 
     @Column(name = "photo")
     @Type(type = "text")
@@ -64,6 +71,9 @@ public class ContactData {
     }
     public String getLastname() {
         return lastname;
+    }
+    public String getFullName() {
+        return firstname + " " + lastname;
     }
     public String getMobilephone() {
         return mobilephone;
@@ -78,8 +88,10 @@ public class ContactData {
     public String getAddress() {
         return address;
     }
-    public String getGroup() { return group; }
     public int getId(){ return id;}
+    public Set<GroupData> getGroups() {
+        return new Groups(groups);
+    }
 //    public File getPhoto() { return new File(photo); }
 
     // setters
@@ -133,11 +145,6 @@ public class ContactData {
         return this;
     }
 
-    public ContactData inGroup(String group) {
-        this.group = group;
-        return this;
-    }
-
     public ContactData withId(int id) {
         this.id = id;
         return this;
@@ -153,6 +160,11 @@ public class ContactData {
         return this;
     }
 
+
+    public ContactData inGroup(GroupData group) {
+        groups.add(group);
+        return this;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -186,10 +198,6 @@ public class ContactData {
         result = 31 * result + (email2 != null ? email2.hashCode() : 0);
         result = 31 * result + (email3 != null ? email3.hashCode() : 0);
         return result;
-    }
-
-    public String getFullName() {
-        return firstname + " " + lastname;
     }
 
     @Override

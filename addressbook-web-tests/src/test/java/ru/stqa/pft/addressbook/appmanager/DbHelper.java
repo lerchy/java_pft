@@ -48,4 +48,10 @@ public class DbHelper {
         session.close();
         return new Contacts(contacts);
     }
+
+    public void refresh(Object o){
+        Session session = sessionFactory.openSession();
+        session.refresh(o);
+        session.close();
+    }
 }
