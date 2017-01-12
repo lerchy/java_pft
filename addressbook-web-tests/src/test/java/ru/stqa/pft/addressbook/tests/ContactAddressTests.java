@@ -19,7 +19,6 @@ public class ContactAddressTests extends TestBase{
                     .withFirstname("firstname").withLastname("lastname")
                     .withAddress("address").withHomePhone("333").withMobilePhone("333").withWorkPhone("3333")
                     .withEmail1("test@email.com").withEmail2("test@email.com").withEmail3("test@email.com"));
-//                    .inGroup("test1"));
         }
     }
 
